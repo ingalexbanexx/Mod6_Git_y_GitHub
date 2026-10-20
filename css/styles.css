@@ -1412,3 +1412,279 @@ h1 span {
     display: none;
   }
 }
+
+
+/* =========================================
+   HEADER UNIFICADO - ALEXBANEXX SOLUCIONES IT
+   ========================================= */
+
+.site-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  padding: 0.7rem 0;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(25, 25, 112, 0.97) 0%,
+      rgba(7, 19, 33, 0.98) 48%,
+      rgba(10, 10, 10, 0.98) 100%
+    );
+
+  border-bottom: 1px solid #00F0FF;
+  box-shadow: 0 5px 26px rgba(0, 240, 255, 0.15);
+  isolation: isolate;
+}
+
+/* Fondo tecnológico */
+.site-navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    url("../images/tech-background.svg")
+    center / cover no-repeat;
+
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Línea inferior de neón */
+.site-navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00F0FF,
+    #187BFF,
+    #00F0FF,
+    transparent
+  );
+
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.6);
+  pointer-events: none;
+}
+
+/* Marca: logo y nombre */
+.site-navbar .brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  margin-right: 1rem;
+  color: #FFFFFF;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Tamaño uniforme del logo */
+.site-navbar .brand-logo {
+  display: block;
+  width: 76px;
+  height: 56px;
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 7px rgba(0, 240, 255, 0.35));
+}
+
+/* Nombre de la empresa */
+.site-navbar .brand-title {
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+}
+
+.site-navbar .brand-title small {
+  display: block;
+  margin-top: 4px;
+
+  color: #00F0FF;
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+/* Enlaces del menú */
+.site-navbar .nav-link {
+  padding: 0.6rem 0.7rem !important;
+
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  border: 1px solid transparent;
+  border-radius: 5px;
+
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+/* Hover, foco y sección actual */
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus-visible,
+.site-navbar .nav-link.active {
+  color: #00F0FF;
+  background: rgba(0, 240, 255, 0.07);
+  border-bottom-color: #00F0FF;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.45);
+}
+
+.site-navbar .nav-link:active {
+  color: #FFFFFF;
+  background: #191970;
+  transform: scale(0.97);
+}
+
+/* Botón hamburguesa */
+.site-navbar .navbar-toggler {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #00F0FF;
+  box-shadow: none;
+}
+
+.site-navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 240, 255, 0.25);
+}
+
+/* Icono hamburguesa visible sobre fondo oscuro */
+.site-navbar .navbar-toggler-icon {
+  filter: brightness(0) saturate(100%)
+    invert(78%) sepia(91%) saturate(1200%)
+    hue-rotate(130deg) brightness(105%);
+}
+
+/* Redes sociales */
+.site-navbar .header-social {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  margin-left: 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid rgba(0, 240, 255, 0.4);
+}
+
+.site-navbar .header-social a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 36px;
+  padding: 5px 6px;
+  border-radius: 7px;
+
+  color: #00F0FF;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-decoration: none;
+
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.site-navbar .header-social a span {
+  display: none;
+}
+
+.site-navbar .header-social a:hover,
+.site-navbar .header-social a:focus-visible {
+  color: #FFFFFF;
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Tablet y pantallas intermedias */
+@media (max-width: 1199.98px) {
+  .site-navbar .header-social {
+    margin-left: 0.4rem;
+    padding-left: 0.4rem;
+  }
+
+  .site-navbar .brand-logo {
+    width: 66px;
+    height: 50px;
+  }
+
+  .site-navbar .brand-title {
+    font-size: 0.92rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 991.98px) {
+  .site-navbar .navbar-collapse {
+    padding-top: 0.8rem;
+  }
+
+  .site-navbar .navbar-nav {
+    align-items: stretch !important;
+  }
+
+  .site-navbar .nav-link {
+    padding: 0.7rem 0.8rem !important;
+  }
+
+  .site-navbar .header-social {
+    justify-content: flex-start;
+    margin: 0.8rem 0 0;
+    padding: 0.7rem 0 0;
+    border-left: 0;
+    border-top: 1px solid rgba(0, 240, 255, 0.35);
+  }
+
+  .site-navbar .header-social a {
+    flex-direction: row;
+    gap: 0.4rem;
+  }
+
+  .site-navbar .header-social a span {
+    display: inline;
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-navbar .brand-logo {
+    width: 52px;
+    height: 42px;
+  }
+
+  .site-navbar .brand-mark {
+    gap: 0.45rem;
+    margin-right: 0.4rem;
+  }
+
+  .site-navbar .brand-title {
+    font-size: 0.83rem;
+  }
+
+  .site-navbar .brand-title small {
+    font-size: 0.66rem;
+  }
+}
+
