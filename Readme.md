@@ -109,7 +109,6 @@ Realizamos las modificaciones del archivo .CSS para estilar las modificaciones d
 [feature/header-unificado 552e2c2] Agregamos al final unas moficiaciones en styles.css para los estilos de la unificacion del Header
  6 files changed, 293 insertions(+), 17 deletions(-)
 
-
 - Rama 2 - Mapas de ubicación: feature/mapas-ubicacion
 Objetivo: incorporar dos mapas con distribuciones específicas.
 En index.html:
@@ -182,7 +181,180 @@ a8747f6 (origin/master, origin/main, origin/HEAD, main) Preparacion y revision d
 Terminamos la edición del Archivo Readme.md, después de los merge, subimos el link del repositorio al sitio desplegable
 - git add .
 - git commit -m “Terminamos de editar el archivo Readme.md antes de los merge con las todas las ramas”
-[docs/readme-proyecto cfc04d4] Terminamos de editar el archivo Readme.md antes de los merge con todas las ramas
- 1 file changed, 184 insertions(+)
 
- 
+#### Realizamos los Merges con todas las Ramas
+Verificamos el estado antes de integrar
+- git status
+- git branch -avv
+- git remote -v
+On branch docs/readme-proyecto
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   Readme.md
+* docs/readme-proyecto     cfc04d4 Terminamos de editar el archivo Readme.md antes de los merge con todas las ramas
+  feature/header-unificado 552e2c2 Agregamos al final unas moficiaciones en styles.css para los estilos de la unificacion del Header
+  feature/mapas-ubicacion  5993085 Agregamos las modificaciones al final del archivo styles.css para estilizar la insercion de los mapas de ubicacion
+  main                     a8747f6 [origin/main] Preparacion y revision de archivos para generar ramas de modificaciones
+  remotes/origin/HEAD      -> origin/master
+  remotes/origin/main      a8747f6 Preparacion y revision de archivos para generar ramas de modificaciones
+  remotes/origin/master    a8747f6 Preparacion y revision de archivos para generar ramas de modificaciones
+origin  https://github.com/ingalexbanexx/Mod6_Git_y_Github.git (fetch)
+origin  https://github.com/ingalexbanexx/Mod6_Git_y_Github.git (push)
+
+Vamos a integrar los cambios en el orden correcto, entonces primero actualizamos la rama principal “main”
+- git switch main
+- git pull --ff-only origin main: evitamos que Git cree merge adicionales innecesarios
+From https://github.com/ingalexbanexx/Mod6_Git_y_Github
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+- git branch
+  docs/readme-proyecto
+  feature/header-unificado
+  feature/mapas-ubicacion
+* main
+Incorporamos los commits del encabezado a main
+- git merge --ff-only feature/header-unificado
+Updating a8747f6..552e2c2
+error: Your local changes to the following files would be overwritten by merge: css/styles.css
+Please commit your changes or stash them before you merge.
+Aborting
+Me da un error por el archivo styles.css, entonces, buscamos soluciones 
+- git add css/styles.css
+- git commit -m "Estilos locales actualizados"
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+Hacemos la integración de la rama feature/header-unificado con éxito.
+- git merge --ff-only feature/header-unificado
+Updating a8747f6..552e2c2
+Fast-forward
+ css/styles.css       | 276 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ index.html           |   2 +-
+ pages/contacto.html  | 139 +++++++++++++++++---------
+ pages/proyectos.html | 107 +++++++++++++++++---
+ pages/servicios.html | 107 +++++++++++++++++---
+ pages/sobre-mi.html  | 107 +++++++++++++++++---
+ 6 files changed, 649 insertions(+), 89 deletions(-)
+- git commit -m "Integramos correctamente la rama feature/header-unificado y subimos los cambios al proyecto remoto"
+On branch main
+Your branch is up to date with 'origin/main'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   css/styles.css
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Readme.md
+no changes added to commit (use "git add" and/or "git commit -a")
+Tenemos problemas con la integración de la rama adecuadamente a main, solucionamos
+- git add .
+- git commit -m "Integramos correctamente la rama feature/header-unificado y subimos los cambios al proyecto remoto"
+[main 3921bf1] Integramos correctamente la rama feature/header-unificado y subimos los cambios al proyecto remoto
+ 1 file changed, 188 insertions(+)
+ create mode 100644 Readme.md
+- git push origin main
+>> Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 3.51 KiB | 224.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/ingalexbanexx/Mod6_Git_y_GitHub.git
+To https://github.com/ingalexbanexx/Mod6_Git_y_Github.git
+   552e2c2..3921bf1  main -> main
+PS G:\Mi unidad\2026- CURSOS\CODERHOUSE - FULL STACK DEVELOPMENT\MODULO 6- GIT Y GITHUB\2026-09-23- ENTREGABLE GIT & GITHUB\Mod6_Pseudoclases_y_Bootstrap_Git> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+- git status
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+Verificamos que todo este bien, y corroboramos que el repositorio tiene un estado ideal
+- git log --oneline --decorate -5
+>> git status
+3921bf1 (HEAD -> main, origin/main) Integramos correctamente la rama feature/header-unificado y subimos los cambios al proyecto remoto
+552e2c2 (feature/header-unificado) Agregamos al final unas moficiaciones en styles.css para los estilos de la unificacion del Header
+d5ab712 Cambiamos el codigo de NAV en todas las pages igual a Index.htnl
+a8747f6 (origin/master, origin/HEAD) Preparacion y revision de archivos para generar ramas de modificaciones
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+Ahora integramos la rama de los mapas de ubicación, feature/mapa-ubicación
+- git merge --ff-only feature/mapas-ubicacion
+hint: Diverging branches can't be fast-forwarded, you need to either:
+hint:
+hint:   git merge --no-ff
+hint:
+hint: or:
+hint:
+hint:   git rebase
+hint:
+hint: Disable this message with "git config set advice.diverging false"
+fatal: Not possible to fast-forward, aborting.
+Da un error el cual solucionamos de la siguiente forma, solucionamos todos los inconvenientes.
+- git merge feature/mapas-ubicacion
+>> 
+Merge made by the 'ort' strategy.
+ css/styles.css      | 212 ++++++++++++++++++++++++++++++
+ index.html          |  52 +++++++-
+ pages/contacto.html | 366 +++++++++++++++++++++++++++++-----------------------
+ 3 files changed, 462 insertions(+), 168 deletions(-)
+- git push origin main
+>> 
+Enumerating objects: 25, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (13/13), 4.83 KiB | 126.00 KiB/s, done.
+Total 13 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), completed with 4 local objects.
+remote: This repository moved. Please use the new location:
+remote:   https://github.com/ingalexbanexx/Mod6_Git_y_GitHub.git
+To https://github.com/ingalexbanexx/Mod6_Git_y_Github.git
+   3921bf1..91efd1b  main -> main
+Renombramos el Repositorio remoto ya que aparentemente se modifico su nombre
+- git merge feature/mapas-ubicacion -m "Fusionamos la rama de mapas de ubicacion"
+>> 
+Already up to date.
+- git remote -v
+>> 
+origin  https://github.com/ingalexbanexx/Mod6_Git_y_GitHub.git (fetch)
+origin  https://github.com/ingalexbanexx/Mod6_Git_y_GitHub.git (push)
+Ahora integramos la rama de docs/readme-proyecto
+- git merge docs/readme-proyecto -m "Fusionamos la rama de documentacion docs/readme-proyecto"
+>> 
+Merge made by the 'ort' strategy.
+- git push origin main
+>> 
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (8/8), 1.02 KiB | 52.00 KiB/s, done.
+Total 8 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To https://github.com/ingalexbanexx/Mod6_Git_y_GitHub.git
+   91efd1b..69d7817  main -> main
+
+Historial de Commits
+- git log --oneline
+69d7817 (HEAD -> main, origin/main) Fusionamos la rama de documentacion docs/readme-proyecto
+91efd1b Merge branch 'feature/mapas-ubicacion'
+3921bf1 Integramos correctamente la rama feature/header-unificado y subimos los cambios al proyecto remoto
+be1fdec (docs/readme-proyecto) Seguimos editando Redmi.md con contenido nuevo, antes de la integracion general
+cfc04d4 Terminamos de editar el archivo Readme.md antes de los merge con todas las ramas
+87bad24 Creacion del Readme.md y agregamos el contenido con lo solicitado en la consigna
+5993085 (feature/mapas-ubicacion) Agregamos las modificaciones al final del archivo styles.css para estilizar la insercion de los mapas de ubicacion
+3572bb3 Incluir el mapa de ubicacion en contacto.html en la seccion al final del main al lado del formulario
+4839403 Incluir el mapa de ubicacion en index.html en la seccion al final del main
+552e2c2 (feature/header-unificado) Agregamos al final unas moficiaciones en styles.css para los estilos de la unificacion del Header
+d5ab712 Cambiamos el codigo de NAV en todas las pages igual a Index.htnl
+a8747f6 (origin/master, origin/HEAD) Preparacion y revision de archivos para generar ramas de modificaciones
+
+Link del repositorio y el sitio desplegado
+Repositorio y Despliegue del Sitio: https://github.com/ingalexbanexx/Mod6_Git_y_GitHub.git  
+
+
