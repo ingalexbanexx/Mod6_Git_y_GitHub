@@ -182,3 +182,7 @@ a8747f6 (origin/master, origin/main, origin/HEAD, main) Preparacion y revision d
 Terminamos la edición del Archivo Readme.md, después de los merge, subimos el link del repositorio al sitio desplegable
 - git add .
 - git commit -m “Terminamos de editar el archivo Readme.md antes de los merge con las todas las ramas”
+[docs/readme-proyecto cfc04d4] Terminamos de editar el archivo Readme.md antes de los merge con todas las ramas
+ 1 file changed, 184 insertions(+)
+
+ 
